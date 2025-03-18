@@ -1,0 +1,49 @@
+ask -1: Task Explanation: Create a simple FreeStyle Job To Install Nginx on your server (tools:
+jenkins, ubuntu vm)
+
+Click on "New Item".
+Enter a job name (e.g., Install_Nginx).
+Select Freestyle Project and click OK.
+Configure the Job
+Scroll to down and "Build Steps" option → Click "Add build step" → Select "Execute shell".
+
+
+Script to Execute:
+#!/bin/bash
+sudo apt update
+sudo apt install -y nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+echo "Nginx installation completed!"
+
+
+
+Save the job.
+
+Run the Job
+
+Click "Build Now".
+
+Monitor the build logs on (Console Output) to check for any errors.
+
+if you face any sudo password related errors
+
+Follow the below Steps:
+
+Login to Ubuntu machine
+
+execute command "visudo"
+
+Add the below paraeters
+
+jenkins ALL=(ALL) NOPASSWD: ALL
+
+save it
+
+Again Re run the Job
+
+login to the server:
+----------------------
+
+systemctl status nginx
+
